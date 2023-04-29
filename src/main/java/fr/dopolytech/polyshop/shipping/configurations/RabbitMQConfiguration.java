@@ -21,6 +21,6 @@ public class RabbitMQConfiguration {
 
     @Bean
     public Binding paymentDoneBinding(Queue startShippingQueue, TopicExchange paymentExchange) {
-        return BindingBuilder.bind(startShippingQueue).to(paymentExchange).with("payment.success");
+        return BindingBuilder.bind(startShippingQueue).to(paymentExchange).with("payment.done.success");
     }
 }

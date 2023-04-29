@@ -19,12 +19,12 @@ public class QueueService {
 
     public void sendShippingSuccess(PolyshopEvent event) throws JsonProcessingException {
         String message = this.stringify(event);
-        rabbitTemplate.convertAndSend("shippingExchange", "shipping.success", message);
+        rabbitTemplate.convertAndSend("shippingExchange", "shipping.done.success", message);
     }
 
     public void sendShippingFailed(PolyshopEvent event) throws JsonProcessingException {
         String message = this.stringify(event);
-        rabbitTemplate.convertAndSend("shippingExchange", "shipping.failed", message);
+        rabbitTemplate.convertAndSend("shippingExchange", "shipping.done.failed", message);
     }
 
     public String stringify(PolyshopEvent data) throws JsonProcessingException {
