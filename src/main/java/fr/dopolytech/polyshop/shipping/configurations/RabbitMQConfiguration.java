@@ -15,12 +15,12 @@ public class RabbitMQConfiguration {
     }
 
     @Bean
-    public TopicExchange paymentExchange() {
-        return new TopicExchange("paymentExchange");
+    public TopicExchange orderExchange() {
+        return new TopicExchange("orderExchange");
     }
 
     @Bean
-    public Binding paymentDoneBinding(Queue startShippingQueue, TopicExchange paymentExchange) {
-        return BindingBuilder.bind(startShippingQueue).to(paymentExchange).with("payment.done.success");
+    public Binding paymentDoneBinding(Queue startShippingQueue, TopicExchange exchange) {
+        return BindingBuilder.bind(startShippingQueue).to(exchange).with("order.payment.success");
     }
 }
